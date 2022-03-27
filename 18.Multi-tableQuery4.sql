@@ -8,5 +8,5 @@
 select * from EMP e;
 select e.EMPNO, e.ENAME, e.MGR, e2.EMPNO, e2.ENAME as MGRName
 from EMP e 
-left join EMP e2
+left join EMP e2  -- then the king is able to display
 on (e.MGR = e2.EMPNO);
