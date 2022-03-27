@@ -1,3 +1,0 @@
--- New script in localhost.
--- Date: Mar 27, 2022
--- Time: 2:36:05 AM
