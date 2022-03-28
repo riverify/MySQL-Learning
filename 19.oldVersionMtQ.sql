@@ -15,4 +15,3 @@ from EMP e, DEPT d, SALGRADE s
 where e.DEPTNO = d.DEPTNO and e.SAL < 2000 and (e.SAL between s.LOSAL and s.HISAL);
 
 -- 缺点：连接条件和筛选条件没有分开，都写在了where子句之中
-
