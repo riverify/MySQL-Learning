@@ -18,6 +18,13 @@ select * from EMP e where e.DEPTNO = 30 and e.SAL = (select MAX(e2.SAL) from EMP
 select * from EMP e where e.SAL = (select MAX(e2.SAL) from EMP e2 where e2.DEPTNO = e.DEPTNO);
 
 -- 查询工资高于所在部门的平均工资的那些员工
-
+select * from EMP e where e.SAL >= (select AVG(e2.SAL) from EMP e2 where e2.DEPTNO = e.DEPTNO);
 
 -- 查询每个部门的平均薪水的等级
+-- 查询各个部门的平均工资,将他看作一章表，join　salgtade，记得多用as
+select depSalAvg.deptno, depSalAvg.asl, s.GRADE as 'avg grade' from
+(select e.DEPTNO as deptno, AVG(SAL) as asl
+from EMP e
+group by DEPTNO) as depSalAvg
+join SALGRADE s
+on (depSalAvg.asl between s.LOSAL and s.HISAL); -- 子查询　不是只能出现在where子句，也能出现在其他位置
